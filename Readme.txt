@@ -31,8 +31,18 @@ The android app lets you:
 
 
 
+
 ** Solution Approach**
-1. Used Kotlin for developing a
+1. Used Kotlin for application development.
+2. BluetoothAdapter has been used for all Bluetooth requests.
+3. To connect with remote device we have listed all the Bluetooth device that are available in the vicinity, user would select any device for pairing and connection.
+4. Initiator app will create a ClientBluetoothSocket that will be open to send communication messages to connected device. Remote device that is connected will use BluetoothServerSocket
+to listen for connection requests, when a device with same app tries to connect, server device got connected and opens a socket to send messages.
+5. When a user enter two numbers and press divide or multiply buttons json message sent to connected device for calculation, connected device calculate and share json result with client device.
+6. Once connection is established both devices can perform calculation on each other by pressing buttons.
+3. Junit has been used to write unit test cases for calculation function.
+
+
 
 
 **Permissions required**
