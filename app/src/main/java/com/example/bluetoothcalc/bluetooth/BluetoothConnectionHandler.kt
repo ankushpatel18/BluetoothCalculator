@@ -4,10 +4,7 @@ import android.app.Activity
 import android.bluetooth.BluetoothDevice
 import android.content.Context
 import android.util.Log
-import com.example.bluetoothcalc.bluetooth.requests.ConnectionRequest
-import com.example.bluetoothcalc.bluetooth.requests.DiscoverRequest
-import com.example.bluetoothcalc.bluetooth.requests.EnableRequest
-import com.example.bluetoothcalc.bluetooth.requests.PairRequest
+import com.example.bluetoothcalc.bluetooth.requests.*
 import java.lang.IllegalArgumentException
 
 
@@ -73,7 +70,7 @@ class BluetoothConnectionHandler(context: Context) :
     }
 
     fun sendMsg(msg: String) {
-        connectionRequest.sendMsg(msg)
+        connectionRequest.sendMsg(encryptString(msg))
     }
 
     /**
@@ -137,7 +134,7 @@ class BluetoothConnectionHandler(context: Context) :
     }
 
     override fun onNewMsg(newMsg: String) {
-        eventListener?.onNewMsg(newMsg)
+        eventListener?.onNewMsg(decryptString(newMsg))
     }
 
 
